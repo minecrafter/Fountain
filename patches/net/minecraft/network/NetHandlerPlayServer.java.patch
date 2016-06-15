@@ -1,0 +1,17 @@
+--- minecraft/src/net/minecraft/network/NetHandlerPlayServer.java
++++ src/main/java/net/minecraft/network/NetHandlerPlayServer.java
+@@ -801,12 +801,14 @@
+ 
+    }
+ 
+    public void processUseEntity(CPacketUseEntity var1) {
+       PacketThreadUtil.checkThreadAndEnqueue(var1, this, this.playerEntity.getServerWorld());
++      if (this.playerEntity.isDead) return; // CraftBukkit
+       WorldServer var2 = this.serverController.worldServerForDimension(this.playerEntity.dimension);
+       Entity var3 = var1.getEntityFromWorld(var2);
++      if (var3 == this.playerEntity && !this.playerEntity.isSpectator()) return; // Spigot
+       this.playerEntity.markPlayerActive();
+       if(var3 != null) {
+          boolean var4 = this.playerEntity.canEntityBeSeen(var3);
+          double var5 = 36.0D;
+          if(!var4) {
