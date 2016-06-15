@@ -1,0 +1,18 @@
+--- minecraft/src/net/minecraft/entity/EntityTrackerEntry.java
++++ src/main/java/net/minecraft/entity/EntityTrackerEntry.java
+@@ -362,10 +362,15 @@
+                   for(PotionEffect var14 : var11.getActivePotionEffects()) {
+                      var1.connection.sendPacket(new SPacketEntityEffect(this.trackedEntity.getEntityId(), var14));
+                   }
+                }
+ 
++               // SportBukkit Start - inform new viewer of our passengers
++               if(!this.trackedEntity.getPassengers().isEmpty()) {
++                   var1.connection.sendPacket(new SPacketSetPassengers(trackedEntity));
++               }
++               // SportBukkit End
+                this.trackedEntity.addTrackingPlayer(var1);
+                var1.addEntity(this.trackedEntity);
+             }
+          } else if(this.trackingPlayers.contains(var1)) {
+             this.trackingPlayers.remove(var1);
