@@ -1,0 +1,15 @@
+--- minecraft/src/net/minecraft/util/datafix/fixes/ItemIntIDToString.java
++++ src/main/java/net/minecraft/util/datafix/fixes/ItemIntIDToString.java
+@@ -261,11 +261,11 @@
+       ID_MAP[345] = "minecraft:compass";
+       ID_MAP[346] = "minecraft:fishing_rod";
+       ID_MAP[347] = "minecraft:clock";
+       ID_MAP[348] = "minecraft:glowstone_dust";
+       ID_MAP[349] = "minecraft:fish";
+-      ID_MAP[350] = "minecraft:cooked_fished";
++      ID_MAP[350] = "minecraft:cooked_fish"; // SportBukkit - cooked_fished -> cooked_fish
+       ID_MAP[351] = "minecraft:dye";
+       ID_MAP[352] = "minecraft:bone";
+       ID_MAP[353] = "minecraft:sugar";
+       ID_MAP[354] = "minecraft:cake";
+       ID_MAP[355] = "minecraft:bed";
